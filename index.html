@@ -1,589 +1,2919 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BioVerse 3D | Human Anatomy 3D Models & Biology Learning</title>
-  <meta name="description" content="BioVerse 3D is a Hindi-English school biology learning website for exploring human anatomy, body parts, organs and 3D models such as the skeleton, heart and lungs.">
-  <meta name="keywords" content="human anatomy 3D, human body 3D model, biology learning, anatomy in Hindi, human organs 3D, skeleton 3D, heart 3D model, lungs 3D model, school biology">
-  <meta name="author" content="Yogesh Kumar Yadav">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#06121a">
+<title>BioVerse 3D | Human Anatomy 3D Learning</title>
 
-  <!-- Replace this with your real Vercel URL after deployment -->
-  <link rel="canonical" href="https://YOUR-VERCEL-DOMAIN.vercel.app/">
+<meta name="description"
+content="BioVerse 3D is a Hindi-English interactive human anatomy learning website for school students. Explore human skeleton, brain, heart, lungs, liver, kidney, stomach, intestine, eye and ear using interactive 3D models.">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="BioVerse 3D | Human Anatomy Learning">
-  <meta property="og:description" content="Explore human anatomy and body parts with interactive 3D models and simple Hindi-English explanations for school learning.">
-  <meta property="og:url" content="https://YOUR-VERCEL-DOMAIN.vercel.app/">
-  <meta property="og:site_name" content="BioVerse 3D">
+<meta name="keywords"
+content="human anatomy 3D, human body 3D model, biology learning, anatomy Hindi, anatomy English, skeleton 3D, heart 3D, brain 3D, lungs 3D, kidney 3D, liver 3D, school biology">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BioVerse 3D | Human Anatomy Learning">
-  <meta name="twitter:description" content="Interactive Hindi-English human anatomy learning with 3D models.">
+<meta name="author" content="Yogesh Kumar Yadav">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#06121a">
 
-  <!-- Educational site structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"BioVerse 3D",
-    "url":"https://YOUR-VERCEL-DOMAIN.vercel.app/",
-    "description":"Hindi-English interactive human anatomy and school biology learning website with 3D models.",
-    "inLanguage":["hi","en"],
-    "author":{
-      "@type":"Person",
-      "name":"Yogesh Kumar Yadav"
-    }
+<link rel="canonical"
+href="https://bioverse-3d-anatomy.vercel.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:title"
+content="BioVerse 3D | Interactive Human Anatomy Learning">
+<meta property="og:description"
+content="Explore human anatomy through interactive 3D models with Hindi-English explanations for school learning.">
+<meta property="og:url"
+content="https://bioverse-3d-anatomy.vercel.app/">
+<meta property="og:site_name" content="BioVerse 3D">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BioVerse 3D | Human Anatomy Learning">
+<meta name="twitter:description"
+content="Interactive Hindi-English human anatomy learning with 3D models.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"BioVerse 3D",
+  "url":"https://bioverse-3d-anatomy.vercel.app/",
+  "description":"Interactive Hindi-English human anatomy learning website for school students.",
+  "inLanguage":["hi","en"],
+  "author":{
+    "@type":"Person",
+    "name":"Yogesh Kumar Yadav"
   }
-  </script>
+}
+</script>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"EducationalOrganization",
-    "name":"BioVerse 3D",
-    "url":"https://YOUR-VERCEL-DOMAIN.vercel.app/",
-    "founder":{
-      "@type":"Person",
-      "name":"Yogesh Kumar Yadav"
-    },
-    "description":"Educational human anatomy learning project for school students."
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+  Inter,
+  "Noto Sans Devanagari",
+  "Nirmala UI",
+  system-ui,
+  sans-serif;
+
+  color:#edf9ff;
+
+  background:
+  radial-gradient(
+    circle at 8% 4%,
+    rgba(37,210,255,.12),
+    transparent 24%
+  ),
+  radial-gradient(
+    circle at 92% 16%,
+    rgba(91,111,255,.10),
+    transparent 28%
+  ),
+  linear-gradient(
+    135deg,
+    #030a10,
+    #071722 55%,
+    #030a10
+  );
+
+  min-height:100vh;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+a{
+  color:inherit;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  backdrop-filter:blur(18px);
+
+  background:rgba(3,10,16,.92);
+
+  border-bottom:
+  1px solid rgba(255,255,255,.07);
+}
+
+.navbar{
+  max-width:1450px;
+  margin:auto;
+
+  min-height:72px;
+
+  padding:
+  11px 20px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:18px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+
+  min-width:max-content;
+}
+
+.logo-icon{
+  width:44px;
+  height:44px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:13px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #123c50,
+    #12254a
+  );
+
+  border:
+  1px solid #28566c;
+
+  font-size:22px;
+}
+
+.logo h1{
+  font-size:18px;
+}
+
+.logo p{
+  font-size:9px;
+  color:#76909c;
+  margin-top:3px;
+}
+
+/* SEARCH */
+
+.search{
+  flex:1;
+  max-width:540px;
+  position:relative;
+}
+
+.search input{
+  width:100%;
+
+  padding:
+  12px 48px 12px 15px;
+
+  color:#fff;
+  outline:none;
+
+  background:#07151e;
+
+  border:
+  1px solid #234352;
+
+  border-radius:12px;
+}
+
+.search input:focus{
+  border-color:#38d9ff;
+
+  box-shadow:
+  0 0 0 3px
+  rgba(56,217,255,.08);
+}
+
+.search button{
+  position:absolute;
+
+  right:5px;
+  top:5px;
+  bottom:5px;
+
+  width:38px;
+
+  border:0;
+
+  border-radius:8px;
+
+  color:#5ee6ff;
+
+  background:#102b39;
+
+  cursor:pointer;
+}
+
+/* LANGUAGE */
+
+.language{
+  display:flex;
+
+  padding:4px;
+
+  background:#07151d;
+
+  border:
+  1px solid #203a48;
+
+  border-radius:10px;
+}
+
+.lang{
+  border:0;
+
+  padding:
+  7px 11px;
+
+  border-radius:7px;
+
+  color:#7e99a6;
+
+  background:transparent;
+
+  cursor:pointer;
+
+  font-weight:700;
+
+  font-size:11px;
+}
+
+.lang.active{
+  color:#fff;
+
+  background:
+  linear-gradient(
+    135deg,
+    #176b83,
+    #3152a4
+  );
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  max-width:1050px;
+  margin:auto;
+
+  text-align:center;
+
+  padding:
+  68px 20px 34px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  padding:
+  7px 13px;
+
+  border:
+  1px solid #235166;
+
+  border-radius:100px;
+
+  color:#74e7ff;
+
+  background:#081b26;
+
+  font-size:10px;
+}
+
+.hero h2{
+  margin-top:19px;
+
+  font-size:
+  clamp(35px,6vw,70px);
+
+  line-height:1;
+
+  letter-spacing:-3px;
+}
+
+.gradient{
+  background:
+  linear-gradient(
+    90deg,
+    #44ddff,
+    #718cff,
+    #53e6a8
+  );
+
+  -webkit-background-clip:text;
+
+  color:transparent;
+}
+
+.hero p{
+  max-width:790px;
+
+  margin:
+  20px auto 0;
+
+  color:#8ea7b4;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  max-width:1450px;
+  margin:auto;
+
+  padding:
+  12px 20px 80px;
+}
+
+.lab{
+  display:grid;
+
+  grid-template-columns:
+  1.25fr .75fr;
+
+  gap:20px;
+}
+
+/* ================= VIEWER ================= */
+
+.viewer-card{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:650px;
+
+  border:
+  1px solid #1e3a48;
+
+  border-radius:26px;
+
+  background:
+  radial-gradient(
+    circle at 50% 40%,
+    rgba(40,205,255,.10),
+    transparent 35%
+  ),
+  linear-gradient(
+    145deg,
+    #06121a,
+    #091b27
+  );
+
+  box-shadow:
+  0 30px 80px
+  rgba(0,0,0,.35);
+}
+
+.viewer-header{
+  position:absolute;
+
+  z-index:10;
+
+  left:20px;
+  right:20px;
+  top:18px;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  pointer-events:none;
+}
+
+.viewer-title strong{
+  display:block;
+  font-size:14px;
+}
+
+.viewer-title span{
+  display:block;
+
+  color:#738d99;
+
+  margin-top:3px;
+
+  font-size:9px;
+}
+
+.viewer-status{
+  padding:
+  7px 10px;
+
+  color:#66e4ff;
+
+  border:
+  1px solid #235266;
+
+  border-radius:8px;
+
+  background:#08202b;
+
+  font-size:9px;
+}
+
+.viewer-loader{
+  position:absolute;
+
+  z-index:20;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+  rgba(3,12,18,.88);
+
+  backdrop-filter:blur(5px);
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+.viewer-loader.show{
+  opacity:1;
+}
+
+.loader-box{
+  text-align:center;
+}
+
+.spinner{
+  width:38px;
+  height:38px;
+
+  margin:auto;
+
+  border:
+  3px solid #1c3c4b;
+
+  border-top-color:#45dcff;
+
+  border-radius:50%;
+
+  animation:
+  spin .8s linear infinite;
+}
+
+.loader-box p{
+  margin-top:12px;
+
+  color:#9db8c4;
+
+  font-size:11px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
   }
-  </script>
+}
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,"Noto Sans Devanagari","Nirmala UI",system-ui,sans-serif;
-      color:#edf9ff;
-      background:
-        radial-gradient(circle at 8% 4%,rgba(37,210,255,.12),transparent 24%),
-        radial-gradient(circle at 92% 16%,rgba(91,111,255,.10),transparent 28%),
-        linear-gradient(135deg,#030a10,#071722 55%,#030a10);
-      min-height:100vh;
-    }
-    button,input{font:inherit}
-    a{color:inherit}
-    header{
-      position:sticky;top:0;z-index:1000;
-      backdrop-filter:blur(18px);
-      background:rgba(3,10,16,.92);
-      border-bottom:1px solid rgba(255,255,255,.07)
-    }
-    .navbar{
-      max-width:1450px;margin:auto;min-height:72px;padding:11px 20px;
-      display:flex;align-items:center;justify-content:space-between;gap:18px
-    }
-    .logo{display:flex;align-items:center;gap:11px;min-width:max-content}
-    .logo-icon{
-      width:44px;height:44px;display:grid;place-items:center;border-radius:13px;
-      background:linear-gradient(135deg,#123c50,#12254a);border:1px solid #28566c;font-size:22px
-    }
-    .logo h1{font-size:18px}.logo p{font-size:9px;color:#76909c;margin-top:3px}
-    .search{flex:1;max-width:540px;position:relative}
-    .search input{
-      width:100%;padding:12px 48px 12px 15px;color:#fff;outline:none;
-      background:#07151e;border:1px solid #234352;border-radius:12px
-    }
-    .search input:focus{border-color:#38d9ff;box-shadow:0 0 0 3px rgba(56,217,255,.08)}
-    .search button{
-      position:absolute;right:5px;top:5px;bottom:5px;width:38px;border:0;border-radius:8px;
-      color:#5ee6ff;background:#102b39;cursor:pointer
-    }
-    .language{display:flex;padding:4px;background:#07151d;border:1px solid #203a48;border-radius:10px}
-    .lang{border:0;padding:7px 11px;border-radius:7px;color:#7e99a6;background:transparent;cursor:pointer;font-weight:700;font-size:11px}
-    .lang.active{color:#fff;background:linear-gradient(135deg,#176b83,#3152a4)}
-    .hero{max-width:1050px;margin:auto;text-align:center;padding:68px 20px 34px}
-    .badge{
-      display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid #235166;
-      border-radius:100px;color:#74e7ff;background:#081b26;font-size:10px
-    }
-    .hero h2{margin-top:19px;font-size:clamp(35px,6vw,70px);line-height:1;letter-spacing:-3px}
-    .gradient{background:linear-gradient(90deg,#44ddff,#718cff,#53e6a8);-webkit-background-clip:text;color:transparent}
-    .hero p{max-width:790px;margin:20px auto 0;color:#8ea7b4;font-size:14px;line-height:1.8}
-    main{max-width:1450px;margin:auto;padding:12px 20px 80px}
-    .lab{display:grid;grid-template-columns:1.25fr .75fr;gap:20px}
-    .viewer-card{
-      position:relative;overflow:hidden;min-height:650px;border:1px solid #1e3a48;border-radius:26px;
-      background:radial-gradient(circle at 50% 40%,rgba(40,205,255,.10),transparent 35%),linear-gradient(145deg,#06121a,#091b27);
-      box-shadow:0 30px 80px rgba(0,0,0,.35)
-    }
-    .viewer-header{position:absolute;z-index:10;left:20px;right:20px;top:18px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-    .viewer-title strong{display:block;font-size:14px}.viewer-title span{display:block;color:#738d99;margin-top:3px;font-size:9px}
-    .viewer-status{padding:7px 10px;color:#66e4ff;border:1px solid #235266;border-radius:8px;background:#08202b;font-size:9px}
-    .viewer-loader{
-      position:absolute;z-index:20;inset:0;display:flex;align-items:center;justify-content:center;
-      background:rgba(3,12,18,.88);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:.25s
-    }
-    .viewer-loader.show{opacity:1}
-    .loader-box{text-align:center}.spinner{width:38px;height:38px;margin:auto;border:3px solid #1c3c4b;border-top-color:#45dcff;border-radius:50%;animation:spin .8s linear infinite}
-    .loader-box p{margin-top:12px;color:#9db8c4;font-size:11px}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .sketchfab-wrapper{width:100%;height:650px;padding-top:30px}
-    .sketchfab-wrapper iframe{width:100%;height:100%;border:0;border-radius:20px;display:block}
-    .viewer-bottom{position:absolute;left:20px;right:20px;bottom:17px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-    .viewer-tip{padding:7px 10px;border-radius:8px;background:rgba(4,12,18,.8);border:1px solid #203d4a;color:#9eb5c0;font-size:9px}
-    .info-card{
-      padding:25px;border:1px solid #1d3846;border-radius:26px;background:linear-gradient(145deg,#091720,#0b1d29);
-      box-shadow:0 30px 80px rgba(0,0,0,.3)
-    }
-    .info-label{color:#50ddff;text-transform:uppercase;letter-spacing:1.5px;font-size:9px}
-    .info-title{margin-top:8px;font-size:32px}.info-title small{display:block;color:#78939f;margin-top:4px;font-size:13px}
-    .info-description{margin-top:18px;color:#b5cbd4;line-height:1.75;font-size:13px}
-    .section-title{margin-top:22px;margin-bottom:10px;font-size:13px}
-    .points{display:grid;gap:8px}
-    .point{display:flex;gap:10px;padding:10px;border-radius:10px;background:#07151e;border:1px solid #1a3340;color:#b4c9d1;font-size:11px;line-height:1.5}
-    .point-number{color:#55e2a9;font-weight:800}
-    .example{padding:13px;border-radius:12px;border:1px solid #204657;background:rgba(44,190,220,.05);color:#bcd5de;font-size:11px;line-height:1.7}
-    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
-    .btn{display:inline-block;padding:11px 14px;border-radius:10px;text-decoration:none;cursor:pointer;font-size:10px;font-weight:800;border:0;transition:.2s}
-    .btn:hover{transform:translateY(-2px)}.primary{color:#fff;background:linear-gradient(135deg,#18b8dd,#536de8)}
-    .secondary{color:#bceeff;background:#102733;border:1px solid #285265}
-    .section{margin-top:45px}
-    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}
-    .section-head h3{font-size:23px}.section-head p{color:#758f9b;font-size:10px}
-    .organ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-    .organ{
-      padding:17px;border-radius:16px;border:1px solid #1b3542;background:#08151e;cursor:pointer;transition:.25s
-    }
-    .organ:hover{transform:translateY(-5px);border-color:#3c758c;box-shadow:0 15px 35px rgba(0,0,0,.25)}
-    .organ.selected{border-color:#45dcff;background:linear-gradient(145deg,#0b2532,#091923);box-shadow:0 0 0 1px rgba(69,220,255,.12)}
-    .organ-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:#102733;border:1px solid #264958;font-size:22px;margin-bottom:11px}
-    .organ h4{font-size:13px}.organ p{margin-top:3px;color:#728b97;font-size:10px}.organ span{display:block;margin-top:11px;color:#55dfff;font-size:9px}
-    .system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-    .system{padding:20px;border-radius:17px;background:#08151e;border:1px solid #1b3542}
-    .system h4{font-size:14px;margin-bottom:6px}.system p{color:#8099a5;font-size:11px;line-height:1.7}
-    .search-section{margin-top:45px;padding:25px;border-radius:20px;border:1px solid #204151;background:linear-gradient(135deg,rgba(43,192,220,.06),rgba(72,96,224,.05))}
-    .search-section h3{font-size:20px}.search-section p{margin-top:6px;color:#809aa6;font-size:11px}
-    .big-search{margin-top:15px;display:flex;gap:8px}.big-search input{flex:1;padding:13px;border-radius:10px;border:1px solid #254553;outline:none;background:#06131c;color:#fff}
-    .big-search button{padding:0 18px;border:0;border-radius:10px;color:#fff;background:linear-gradient(135deg,#1ebbdc,#536de8);cursor:pointer}
-    .seo-content{margin-top:45px;padding:25px;border:1px solid #1b3542;border-radius:20px;background:#07141c}
-    .seo-content h2{font-size:21px;margin-bottom:12px}.seo-content h3{font-size:15px;margin-top:18px;margin-bottom:6px}
-    .seo-content p,.seo-content li{color:#8ea6b1;font-size:11px;line-height:1.8}.seo-content ul{padding-left:20px}
-    .attribution{margin-top:30px;padding:25px;border-radius:18px;text-align:center;background:#07131b;border:1px solid #19313d}
-    .attribution h3{font-size:17px}.attribution p{max-width:900px;margin:8px auto 0;color:#718995;font-size:10px;line-height:1.7}
-    .toast{
-      position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;z-index:3000;
-      padding:11px 15px;border:1px solid #2a5263;border-radius:10px;background:#081923;color:#cceef8;font-size:11px;transition:.25s
-    }
-    .toast.show{opacity:1;transform:translate(-50%,0)}
-    @media(max-width:1050px){.lab{grid-template-columns:1fr}.organ-grid{grid-template-columns:repeat(3,1fr)}.system-grid{grid-template-columns:1fr}}
-    @media(max-width:720px){
-      .navbar{flex-wrap:wrap}.search{order:3;flex-basis:100%;max-width:none}.hero{padding-top:45px}
-      main{padding-left:12px;padding-right:12px}.viewer-card{min-height:520px}.sketchfab-wrapper{height:520px}
-      .organ-grid{grid-template-columns:repeat(2,1fr)}.info-card{padding:20px}
-    }
-    @media(max-width:450px){.viewer-card{min-height:440px}.sketchfab-wrapper{height:440px}.organ{padding:12px}.big-search{flex-direction:column}.big-search button{height:43px}}
-  </style>
+.sketchfab-wrapper{
+  width:100%;
+  height:650px;
+
+  padding-top:30px;
+}
+
+.sketchfab-wrapper iframe{
+  width:100%;
+  height:100%;
+
+  border:0;
+
+  border-radius:20px;
+
+  display:block;
+}
+
+.viewer-bottom{
+  position:absolute;
+
+  left:20px;
+  right:20px;
+  bottom:17px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  pointer-events:none;
+}
+
+.viewer-tip{
+  padding:
+  7px 10px;
+
+  border-radius:8px;
+
+  background:
+  rgba(4,12,18,.8);
+
+  border:
+  1px solid #203d4a;
+
+  color:#9eb5c0;
+
+  font-size:9px;
+}
+
+/* ================= INFO ================= */
+
+.info-card{
+  padding:25px;
+
+  border:
+  1px solid #1d3846;
+
+  border-radius:26px;
+
+  background:
+  linear-gradient(
+    145deg,
+    #091720,
+    #0b1d29
+  );
+
+  box-shadow:
+  0 30px 80px
+  rgba(0,0,0,.3);
+}
+
+.info-label{
+  color:#50ddff;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.5px;
+
+  font-size:9px;
+}
+
+.info-title{
+  margin-top:8px;
+
+  font-size:32px;
+}
+
+.info-title small{
+  display:block;
+
+  color:#78939f;
+
+  margin-top:4px;
+
+  font-size:13px;
+}
+
+.info-description{
+  margin-top:18px;
+
+  color:#b5cbd4;
+
+  line-height:1.75;
+
+  font-size:13px;
+}
+
+.section-title{
+  margin-top:22px;
+  margin-bottom:10px;
+
+  font-size:13px;
+}
+
+.points{
+  display:grid;
+  gap:8px;
+}
+
+.point{
+  display:flex;
+
+  gap:10px;
+
+  padding:10px;
+
+  border-radius:10px;
+
+  background:#07151e;
+
+  border:
+  1px solid #1a3340;
+
+  color:#b4c9d1;
+
+  font-size:11px;
+
+  line-height:1.5;
+}
+
+.point-number{
+  color:#55e2a9;
+  font-weight:800;
+}
+
+.example{
+  padding:13px;
+
+  border-radius:12px;
+
+  border:
+  1px solid #204657;
+
+  background:
+  rgba(44,190,220,.05);
+
+  color:#bcd5de;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+/* ================= BUTTONS ================= */
+
+.actions{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:19px;
+}
+
+.btn{
+  display:inline-block;
+
+  padding:
+  11px 14px;
+
+  border-radius:10px;
+
+  text-decoration:none;
+
+  cursor:pointer;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  border:0;
+
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.primary{
+  color:#fff;
+
+  background:
+  linear-gradient(
+    135deg,
+    #18b8dd,
+    #536de8
+  );
+}
+
+.secondary{
+  color:#bceeff;
+
+  background:#102733;
+
+  border:
+  1px solid #285265;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  margin-top:45px;
+}
+
+.section-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  margin-bottom:16px;
+}
+
+.section-head h3{
+  font-size:23px;
+}
+
+.section-head p{
+  color:#758f9b;
+  font-size:10px;
+}
+
+/* ================= ORGAN GRID ================= */
+
+.organ-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(4,1fr);
+
+  gap:13px;
+}
+
+.organ{
+  padding:17px;
+
+  border-radius:16px;
+
+  border:
+  1px solid #1b3542;
+
+  background:#08151e;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  text-align:left;
+
+  color:white;
+}
+
+.organ:hover{
+  transform:translateY(-5px);
+
+  border-color:#3c758c;
+
+  box-shadow:
+  0 15px 35px
+  rgba(0,0,0,.25);
+}
+
+.organ.selected{
+  border-color:#45dcff;
+
+  background:
+  linear-gradient(
+    145deg,
+    #0b2532,
+    #091923
+  );
+
+  box-shadow:
+  0 0 0 1px
+  rgba(69,220,255,.12);
+}
+
+.organ-icon{
+  width:48px;
+  height:48px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:13px;
+
+  background:#102733;
+
+  border:
+  1px solid #264958;
+
+  font-size:22px;
+
+  margin-bottom:11px;
+}
+
+.organ h4{
+  font-size:13px;
+}
+
+.organ p{
+  margin-top:3px;
+
+  color:#728b97;
+
+  font-size:10px;
+}
+
+.organ span{
+  display:block;
+
+  margin-top:11px;
+
+  color:#55dfff;
+
+  font-size:9px;
+}
+
+/* ================= SYSTEMS ================= */
+
+.system-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:13px;
+}
+
+.system{
+  padding:20px;
+
+  border-radius:17px;
+
+  background:#08151e;
+
+  border:
+  1px solid #1b3542;
+}
+
+.system h4{
+  font-size:14px;
+
+  margin-bottom:6px;
+}
+
+.system p{
+  color:#8099a5;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+/* ================= SEARCH ================= */
+
+.search-section{
+  margin-top:45px;
+
+  padding:25px;
+
+  border-radius:20px;
+
+  border:
+  1px solid #204151;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(43,192,220,.06),
+    rgba(72,96,224,.05)
+  );
+}
+
+.search-section h3{
+  font-size:20px;
+}
+
+.search-section p{
+  margin-top:6px;
+
+  color:#809aa6;
+
+  font-size:11px;
+}
+
+.big-search{
+  margin-top:15px;
+
+  display:flex;
+
+  gap:8px;
+}
+
+.big-search input{
+  flex:1;
+
+  padding:13px;
+
+  border-radius:10px;
+
+  border:
+  1px solid #254553;
+
+  outline:none;
+
+  background:#06131c;
+
+  color:#fff;
+}
+
+.big-search button{
+  padding:
+  0 18px;
+
+  border:0;
+
+  border-radius:10px;
+
+  color:#fff;
+
+  background:
+  linear-gradient(
+    135deg,
+    #1ebbdc,
+    #536de8
+  );
+
+  cursor:pointer;
+}
+
+/* ================= SEO ================= */
+
+.seo-content{
+  margin-top:45px;
+
+  padding:25px;
+
+  border:
+  1px solid #1b3542;
+
+  border-radius:20px;
+
+  background:#07141c;
+}
+
+.seo-content h2{
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.seo-content h3{
+  font-size:15px;
+
+  margin-top:18px;
+  margin-bottom:6px;
+}
+
+.seo-content p,
+.seo-content li{
+  color:#8ea6b1;
+
+  font-size:11px;
+
+  line-height:1.8;
+}
+
+.seo-content ul{
+  padding-left:20px;
+}
+
+/* ================= ATTRIBUTION ================= */
+
+.attribution{
+  margin-top:30px;
+
+  padding:25px;
+
+  border-radius:18px;
+
+  text-align:center;
+
+  background:#07131b;
+
+  border:
+  1px solid #19313d;
+}
+
+.attribution h3{
+  font-size:17px;
+}
+
+.attribution p{
+  max-width:900px;
+
+  margin:
+  8px auto 0;
+
+  color:#718995;
+
+  font-size:10px;
+
+  line-height:1.7;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:24px;
+
+  transform:
+  translate(-50%,20px);
+
+  opacity:0;
+
+  z-index:3000;
+
+  padding:
+  11px 15px;
+
+  border:
+  1px solid #2a5263;
+
+  border-radius:10px;
+
+  background:#081923;
+
+  color:#cceef8;
+
+  font-size:11px;
+
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:
+  translate(-50%,0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+  .lab{
+    grid-template-columns:1fr;
+  }
+
+  .organ-grid{
+    grid-template-columns:
+    repeat(3,1fr);
+  }
+
+  .system-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:720px){
+
+  .navbar{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    order:3;
+
+    flex-basis:100%;
+
+    max-width:none;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  main{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .viewer-card{
+    min-height:520px;
+  }
+
+  .sketchfab-wrapper{
+    height:520px;
+  }
+
+  .organ-grid{
+    grid-template-columns:
+    repeat(2,1fr);
+  }
+
+  .info-card{
+    padding:20px;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .viewer-card{
+    min-height:440px;
+  }
+
+  .sketchfab-wrapper{
+    height:440px;
+  }
+
+  .organ{
+    padding:12px;
+  }
+
+  .big-search{
+    flex-direction:column;
+  }
+
+  .big-search button{
+    height:43px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
+
 <header>
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="logo">
-      <div class="logo-icon" aria-hidden="true">🧬</div>
-      <div>
-        <h1>BioVerse 3D</h1>
-        <p>Human Anatomy Learning Lab</p>
-      </div>
-    </div>
 
-    <div class="search">
-      <input id="topSearch" aria-label="Search a human body part" placeholder="Search Brain, Heart, Kidney..." autocomplete="off">
-      <button type="button" onclick="searchSketchfab('topSearch')" aria-label="Search Sketchfab">🔍</button>
-    </div>
+<nav class="navbar">
 
-    <div class="language" aria-label="Language">
-      <button class="lang active" id="hi" type="button" onclick="changeLanguage('hi')">हिंदी</button>
-      <button class="lang" id="en" type="button" onclick="changeLanguage('en')">English</button>
-    </div>
-  </nav>
+<div class="logo">
+
+<div class="logo-icon">
+🧬
+</div>
+
+<div>
+
+<h1>BioVerse 3D</h1>
+
+<p>Human Anatomy Learning Lab</p>
+
+</div>
+
+</div>
+
+
+<div class="search">
+
+<input
+id="topSearch"
+aria-label="Search a human body part"
+placeholder="Search Brain, Heart, Kidney..."
+autocomplete="off">
+
+<button
+type="button"
+onclick="searchSketchfab('topSearch')"
+aria-label="Search Sketchfab">
+
+🔍
+
+</button>
+
+</div>
+
+
+<div class="language">
+
+<button
+class="lang active"
+id="hi"
+type="button"
+onclick="changeLanguage('hi')">
+
+हिंदी
+
+</button>
+
+<button
+class="lang"
+id="en"
+type="button"
+onclick="changeLanguage('en')">
+
+English
+
+</button>
+
+</div>
+
+</nav>
+
 </header>
 
+
 <section class="hero">
-  <div class="badge">🧬 SCHOOL BIOLOGY • INTERACTIVE 3D</div>
-  <h2 id="heroTitle">Human Body को <span class="gradient">3D में Explore</span> करें</h2>
-  <p id="heroText">Human anatomy, body parts और major organs को Hindi-English explanations के साथ explore करें। 3D models को rotate और zoom करके school biology concepts को visually समझें।</p>
+
+<div class="badge">
+🧬 SCHOOL BIOLOGY • INTERACTIVE 3D
+</div>
+
+<h2 id="heroTitle">
+
+Human Body को
+<span class="gradient">
+3D में Explore
+</span>
+करें
+
+</h2>
+
+<p id="heroText">
+
+Human anatomy, body parts और major organs को
+Hindi-English explanations के साथ explore करें।
+3D models को rotate और zoom करके school biology
+concepts को visually समझें।
+
+</p>
+
 </section>
 
+
 <main>
-  <section class="lab" aria-label="Interactive 3D anatomy viewer">
-    <div class="viewer-card">
-      <div class="viewer-header">
-        <div class="viewer-title">
-          <strong id="viewerTitle">Human Skeleton — 3D Model</strong>
-          <span>Rotate • Zoom • Explore</span>
-        </div>
-        <div class="viewer-status">LIVE 3D</div>
-      </div>
 
-      <div class="viewer-loader" id="viewerLoader" aria-hidden="true">
-        <div class="loader-box"><div class="spinner"></div><p>3D Model loading...</p></div>
-      </div>
+<section class="lab">
 
-      <div class="sketchfab-wrapper">
-        <iframe id="sketchfabViewer"
-          title="Human Skeleton 3D Model"
-          src="https://sketchfab.com/models/657a31ed9704423c8c4e752fb2506a74/embed?autostart=1&ui_infos=0&ui_controls=1"
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          allowfullscreen></iframe>
-      </div>
 
-      <div class="viewer-bottom">
-        <div class="viewer-tip">🖱️ Drag = Rotate</div>
-        <div class="viewer-tip">🔍 Scroll = Zoom</div>
-      </div>
-    </div>
+<!-- ================= 3D VIEWER ================= -->
 
-    <article class="info-card" id="infoCard">
-      <div class="info-label" id="infoCategory">SKELETAL SYSTEM</div>
-      <div class="info-title"><span id="infoName">कंकाल तंत्र</span><small id="infoEnglish">Skeletal System</small></div>
-      <div class="info-description" id="infoDescription">Skeleton शरीर को support देता है, important organs को protect करता है और muscles तथा joints के साथ movement में मदद करता है।</div>
+<div class="viewer-card">
 
-      <div class="section-title" id="functionHeading">इसका मुख्य काम</div>
-      <div class="points" id="points"></div>
+<div class="viewer-header">
 
-      <div class="section-title">Real-world Example</div>
-      <div class="example" id="example">Skull brain को protect करता है और rib cage heart तथा lungs को protection देता है।</div>
+<div class="viewer-title">
 
-      <div class="actions">
-        <a class="btn primary" id="modelLink" href="https://sketchfab.com/3d-models/human-skeleton-highresolution-model-657a31ed9704423c8c4e752fb2506a74" target="_blank" rel="noopener noreferrer">Open Full 3D Model ↗</a>
-        <button class="btn secondary" type="button" onclick="searchSketchfab('topSearch','human skeleton')">Sketchfab Search</button>
-      </div>
-    </article>
-  </section>
+<strong id="viewerTitle">
+Human Skeleton — 3D Model
+</strong>
 
-  <section class="section" id="body-parts">
-    <div class="section-head">
-      <div>
-        <h3 id="organsTitle">⭐ Most Important Human Body Parts</h3>
-        <p id="organsSubtitle">Commonly used organs for school biology</p>
-      </div>
-      <p>Interactive 3D</p>
-    </div>
-    <div class="organ-grid" id="organGrid"></div>
-  </section>
+<span>
+Rotate • Zoom • Explore
+</span>
 
-  <section class="section" aria-labelledby="systemsTitle">
-    <div class="section-head">
-      <div>
-        <h3 id="systemsTitle">Human Body Systems</h3>
-        <p>Major systems for quick learning</p>
-      </div>
-    </div>
-    <div class="system-grid">
-      <article class="system"><h4>🫀 Circulatory System</h4><p>Heart और blood vessels के माध्यम से body में blood circulation होता है।</p></article>
-      <article class="system"><h4>🫁 Respiratory System</h4><p>Lungs और airways breathing तथा gas exchange में important हैं।</p></article>
-      <article class="system"><h4>🧠 Nervous System</h4><p>Brain, spinal cord और nerves information communication और control में important हैं।</p></article>
-      <article class="system"><h4>🍎 Digestive System</h4><p>Food को digest करके nutrients absorb करने में मदद करता है।</p></article>
-      <article class="system"><h4>🦴 Skeletal System</h4><p>Bones body को support और protection प्रदान करती हैं।</p></article>
-      <article class="system"><h4>💪 Muscular System</h4><p>Muscles body movement और posture में important हैं।</p></article>
-    </div>
-  </section>
+</div>
 
-  <section class="search-section" id="search">
-    <h3 id="searchTitle">🔍 कोई भी Body Part Search करें</h3>
-    <p id="searchText">अगर required body part ऊपर नहीं है, उसका नाम search करें और Sketchfab पर related anatomy 3D models देखें।</p>
-    <div class="big-search">
-      <input id="bigSearch" aria-label="Search any body part on Sketchfab" placeholder="Example: pancreas, eye, ear, spine..." autocomplete="off">
-      <button type="button" onclick="searchSketchfab('bigSearch')" id="searchButton">Search 3D Models</button>
-    </div>
-  </section>
+<div class="viewer-status">
+LIVE 3D
+</div>
 
-  <!-- Static, crawlable educational text: important for search engines -->
-  <section class="seo-content" aria-labelledby="aboutTitle">
-    <h2 id="aboutTitle">Human Anatomy 3D Learning — Hindi & English</h2>
-    <p>BioVerse 3D is an educational human anatomy website designed for school students. It helps learners understand the human body, organs and body systems through readable explanations and interactive 3D model viewing.</p>
+</div>
 
-    <h3>Human Skeleton 3D Model</h3>
-    <p>Explore the human skeleton to understand bones, skull, spine, rib cage, joints and the role of the skeletal system in support, protection and movement.</p>
 
-    <h3>Human Heart 3D Model</h3>
-    <p>Learn the basic structure and function of the heart, including its role in pumping blood through the pulmonary and systemic circulation.</p>
+<div
+class="viewer-loader"
+id="viewerLoader">
 
-    <h3>Human Lungs 3D Model</h3>
-    <p>Explore lung anatomy and learn how the respiratory system supports breathing and gas exchange between air and blood.</p>
+<div class="loader-box">
 
-    <h3>Other Human Body Parts</h3>
-    <p>Students can search for additional anatomy models such as brain, eye, ear, kidney, liver, stomach, intestine, spine and other organs using the Sketchfab search option.</p>
+<div class="spinner"></div>
 
-    <h3>For School Biology Learning</h3>
-    <ul>
-      <li>Hindi and English language selection.</li>
-      <li>Simple descriptions of body parts and their functions.</li>
-      <li>Real-world learning examples.</li>
-      <li>Interactive 3D viewing for selected anatomy models.</li>
-      <li>Search option for additional human anatomy models.</li>
-    </ul>
-  </section>
+<p>
+3D Model loading...
+</p>
 
-  <section class="attribution">
-    <h3>📚 Educational Attribution & Model Credits</h3>
-    <p><strong>Website & Educational Interface:</strong> Yogesh Kumar Yadav.</p>
-    <p>This project is created for school learning and educational demonstration. Third-party 3D models referenced or embedded from Sketchfab remain the property of their respective creators.</p>
-    <p>Always check the individual Sketchfab model's current license and creator permissions before downloading, modifying, redistributing, or commercially using a model. This website does not claim ownership of third-party 3D assets.</p>
-  </section>
+</div>
+
+</div>
+
+
+<div class="sketchfab-wrapper">
+
+<iframe
+id="sketchfabViewer"
+
+title="Human Skeleton 3D Model"
+
+src="https://sketchfab.com/models/657a31ed9704423c8c4e752fb2506a74/embed?autostart=1&ui_infos=0&ui_controls=1"
+
+allow="autoplay; fullscreen; xr-spatial-tracking"
+
+allowfullscreen>
+
+</iframe>
+
+</div>
+
+
+<div class="viewer-bottom">
+
+<div class="viewer-tip">
+🖱️ Drag = Rotate
+</div>
+
+<div class="viewer-tip">
+🔍 Scroll = Zoom
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= INFO ================= -->
+
+<article class="info-card">
+
+<div
+class="info-label"
+id="infoCategory">
+
+SKELETAL SYSTEM
+
+</div>
+
+
+<div class="info-title">
+
+<span id="infoName">
+कंकाल तंत्र
+</span>
+
+<small id="infoEnglish">
+Skeletal System
+</small>
+
+</div>
+
+
+<div
+class="info-description"
+id="infoDescription">
+
+Skeleton शरीर को support देता है,
+important organs को protect करता है
+और muscles तथा joints के साथ
+movement में मदद करता है।
+
+</div>
+
+
+<div
+class="section-title"
+id="functionHeading">
+
+इसका मुख्य काम
+
+</div>
+
+
+<div
+class="points"
+id="points">
+</div>
+
+
+<div class="section-title">
+
+Real-world Example
+
+</div>
+
+
+<div
+class="example"
+id="example">
+
+Skull brain को protect करता है
+और rib cage heart तथा lungs को protection देता है।
+
+</div>
+
+
+<div class="actions">
+
+<a
+class="btn primary"
+id="modelLink"
+href="https://sketchfab.com/3d-models/human-skeleton-highresolution-model-657a31ed9704423c8c4e752fb2506a74"
+target="_blank"
+rel="noopener noreferrer">
+
+Open Full 3D Model ↗
+
+</a>
+
+
+<button
+class="btn secondary"
+type="button"
+onclick="searchCurrentModel()">
+
+Sketchfab Search
+
+</button>
+
+</div>
+
+</article>
+
+</section>
+
+
+<!-- ================= ORGANS ================= -->
+
+<section
+class="section"
+id="body-parts">
+
+<div class="section-head">
+
+<div>
+
+<h3 id="organsTitle">
+⭐ Most Important Human Body Parts
+</h3>
+
+<p id="organsSubtitle">
+Commonly used organs for school biology
+</p>
+
+</div>
+
+<p>
+Interactive 3D
+</p>
+
+</div>
+
+
+<div
+class="organ-grid"
+id="organGrid">
+</div>
+
+</section>
+
+
+<!-- ================= SYSTEMS ================= -->
+
+<section
+class="section">
+
+<div class="section-head">
+
+<div>
+
+<h3 id="systemsTitle">
+Human Body Systems
+</h3>
+
+<p>
+Major systems for quick learning
+</p>
+
+</div>
+
+</div>
+
+
+<div class="system-grid">
+
+
+<article class="system">
+
+<h4>
+🫀 Circulatory System
+</h4>
+
+<p>
+Heart और blood vessels के माध्यम से
+body में blood circulation होता है।
+</p>
+
+</article>
+
+
+<article class="system">
+
+<h4>
+🫁 Respiratory System
+</h4>
+
+<p>
+Lungs और airways breathing तथा
+gas exchange में important हैं।
+</p>
+
+</article>
+
+
+<article class="system">
+
+<h4>
+🧠 Nervous System
+</h4>
+
+<p>
+Brain, spinal cord और nerves information
+communication और control में important हैं।
+</p>
+
+</article>
+
+
+<article class="system">
+
+<h4>
+🍎 Digestive System
+</h4>
+
+<p>
+Food को digest करके nutrients
+absorb करने में मदद करता है।
+</p>
+
+</article>
+
+
+<article class="system">
+
+<h4>
+🦴 Skeletal System
+</h4>
+
+<p>
+Bones body को support और
+protection प्रदान करती हैं।
+</p>
+
+</article>
+
+
+<article class="system">
+
+<h4>
+💪 Muscular System
+</h4>
+
+<p>
+Muscles body movement और
+posture में important हैं।
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section
+class="search-section"
+id="search">
+
+<h3 id="searchTitle">
+
+🔍 कोई भी Body Part Search करें
+
+</h3>
+
+<p id="searchText">
+
+अगर required body part ऊपर नहीं है,
+उसका नाम search करें और Sketchfab पर
+related anatomy 3D models देखें।
+
+</p>
+
+
+<div class="big-search">
+
+<input
+id="bigSearch"
+aria-label="Search any body part on Sketchfab"
+placeholder="Example: pancreas, eye, ear, spine..."
+autocomplete="off">
+
+
+<button
+type="button"
+onclick="searchSketchfab('bigSearch')"
+id="searchButton">
+
+Search 3D Models
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= SEO CONTENT ================= -->
+
+<section
+class="seo-content">
+
+<h2>
+Human Anatomy 3D Learning — Hindi & English
+</h2>
+
+<p>
+
+BioVerse 3D is an educational human anatomy
+website designed for school students.
+It helps learners understand the human body,
+organs and body systems through simple
+explanations and interactive 3D model viewing.
+
+</p>
+
+
+<h3>
+Human Skeleton 3D Model
+</h3>
+
+<p>
+
+Explore the human skeleton to understand
+bones, skull, spine, rib cage, joints and
+the role of the skeletal system in support,
+protection and movement.
+
+</p>
+
+
+<h3>
+Human Heart 3D Model
+</h3>
+
+<p>
+
+Learn the basic structure and function of
+the heart and understand how it pumps
+blood throughout the body.
+
+</p>
+
+
+<h3>
+Human Brain 3D Model
+</h3>
+
+<p>
+
+Explore the brain, brainstem, cerebellum
+and major anatomical regions using an
+interactive three-dimensional model.
+
+</p>
+
+
+<h3>
+Human Lungs 3D Model
+</h3>
+
+<p>
+
+Explore lung anatomy and understand
+how the respiratory system supports
+breathing and gas exchange.
+
+</p>
+
+
+<h3>
+Other Human Body Parts
+</h3>
+
+<p>
+
+Students can explore organs such as liver,
+kidney, stomach, intestine, eye and ear.
+Additional anatomy models can be found
+using the search engine.
+
+</p>
+
+
+<h3>
+For School Biology Learning
+</h3>
+
+<ul>
+
+<li>
+Hindi and English language selection.
+</li>
+
+<li>
+Simple descriptions of body parts.
+</li>
+
+<li>
+Real-world learning examples.
+</li>
+
+<li>
+Interactive 3D viewing.
+</li>
+
+<li>
+Search option for additional anatomy models.
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- ================= ATTRIBUTION ================= -->
+
+<section class="attribution">
+
+<h3>
+📚 Educational Attribution & Model Credits
+</h3>
+
+<p>
+
+<strong>
+Website & Educational Interface:
+</strong>
+
+Yogesh Kumar Yadav.
+
+</p>
+
+<p>
+
+This project is created for school learning
+and educational demonstration.
+Third-party 3D models referenced or embedded
+from Sketchfab remain the property of their
+respective creators.
+
+</p>
+
+<p>
+
+Always check the individual Sketchfab model's
+current license and creator permissions before
+downloading, modifying, redistributing or
+commercially using a model.
+
+</p>
+
+</section>
+
 </main>
 
-<div class="toast" id="toast"></div>
+
+<div
+class="toast"
+id="toast">
+</div>
+
 
 <script>
+
+/* =========================================================
+   BIOVERSE 3D
+   MODEL DATABASE
+========================================================= */
+
 const models = {
-  skeleton: {
-    id: "657a31ed9704423c8c4e752fb2506a74",
-    title: "Human Skeleton — 3D Model",
-    url: "https://sketchfab.com/3d-models/human-skeleton-highresolution-model-657a31ed9704423c8c4e752fb2506a74"
+
+  skeleton:{
+    id:"657a31ed9704423c8c4e752fb2506a74",
+
+    title:
+    "Human Skeleton — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-skeleton-highresolution-model-657a31ed9704423c8c4e752fb2506a74"
   },
-  heart: {
-    id: "e48637d3399a4e5184bdf169929dc36e",
-    title: "Anatomical Human Heart — 3D Model",
-    url: "https://sketchfab.com/3d-models/anatomical-human-heart-e48637d3399a4e5184bdf169929dc36e"
+
+
+  /* OLD HEART MODEL — KEPT AS REQUESTED */
+
+  heart:{
+    id:"e48637d3399a4e5184bdf169929dc36e",
+
+    title:
+    "Anatomical Human Heart — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/anatomical-human-heart-e48637d3399a4e5184bdf169929dc36e"
   },
-  lungs: {
-    id: "2b8f0656cff846eab3574789df440c33",
-    title: "Human Lung Anatomy — 3D Model",
-    url: "https://sketchfab.com/3d-models/human-lung-anatomy-3d-model-anatomi-paru-paru-2b8f0656cff846eab3574789df440c33"
+
+
+  lungs:{
+    id:"2b8f0656cff846eab3574789df440c33",
+
+    title:
+    "Human Lung Anatomy — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-lung-anatomy-3d-model-anatomi-paru-paru-2b8f0656cff846eab3574789df440c33"
+  },
+
+
+  /*
+    DEDICATED BRAIN MODEL
+  */
+
+  brain:{
+    id:"1ed87947216945e6a88a26ff5fc4de95",
+
+    title:
+    "Human Brain — Detailed 3D Anatomy Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-brain-detailed-3d-anatomy-model-1ed87947216945e6a88a26ff5fc4de95"
+  },
+
+
+  /*
+    DEDICATED LIVER MODEL
+  */
+
+  liver:{
+    id:"0d9b6b93d5094827b3e7db5d8ffcdb9a",
+
+    title:
+    "Human Liver — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-liver-0d9b6b93d5094827b3e7db5d8ffcdb9a"
+  },
+
+
+  /*
+    DEDICATED KIDNEY MODEL
+  */
+
+  kidney:{
+    id:"e1476ceb1e3b4412af5418eee9c5ed08",
+
+    title:
+    "Human Kidney — 3D Anatomy Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-kidney-e1476ceb1e3b4412af5418eee9c5ed08"
+  },
+
+
+  /*
+    DEDICATED STOMACH MODEL
+    University of Dundee / CAHID
+  */
+
+  stomach:{
+    id:"a81f02baae2b416188c9dac98db101a9",
+
+    title:
+    "Human Stomach Anatomy — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-stomach-anatomy-a81f02baae2b416188c9dac98db101a9"
+  },
+
+
+  /*
+    DEDICATED INTESTINE MODEL
+  */
+
+  intestine:{
+    id:"ee29e640b30444cea7916a67ad981515",
+
+    title:
+    "Human Intestine Anatomy — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/anatomy-human-intestine-ee29e640b30444cea7916a67ad981515"
+  },
+
+
+  /*
+    DEDICATED EYE MODEL
+  */
+
+  eye:{
+    id:"5f741793c4654d14aa8257eec1f1a393",
+
+    title:
+    "Human Eye Anatomy — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-eye-anatomy-5f741793c4654d14aa8257eec1f1a393"
+  },
+
+
+  /*
+    DEDICATED EAR MODEL
+  */
+
+  ear:{
+    id:"a603aa276a0845979a4c6e19a373e57f",
+
+    title:
+    "Human Ear Anatomy — 3D Model",
+
+    url:
+    "https://sketchfab.com/3d-models/human-ear-anatomy-a603aa276a0845979a4c6e19a373e57f"
   }
+
 };
 
+
+/* =========================================================
+   ORGAN INFORMATION
+========================================================= */
+
 const organs = [
-  {
-    key:"heart", icon:"🫀", hi:"हृदय", en:"Heart", category:"CIRCULATORY SYSTEM",
-    description:"Heart एक muscular organ है जो blood को पूरे body में pump करता है।",
-    points:["Blood को lungs और पूरे body तक pump करता है।","Heart में चार chambers होते हैं।","Valves blood को सही direction में flow करने में मदद करते हैं।","Exercise के दौरान heart rate बढ़ सकता है।"],
-    example:"जब आप दौड़ते हैं, muscles को ज्यादा oxygen चाहिए होती है इसलिए heart तेजी से pump करता है।",
-    model:"heart"
-  },
-  {
-    key:"brain", icon:"🧠", hi:"मस्तिष्क", en:"Brain", category:"NERVOUS SYSTEM",
-    description:"Brain nervous system का मुख्य control centre है।",
-    points:["Thinking और learning में important role है।","Sensory information को process करता है।","Body की कई activities को coordinate करता है।","Memory और decision making में important है।"],
-    example:"जब आप कोई maths question solve करते हैं, आपका brain information को process करता है।",
-    search:"human brain anatomy 3d model"
-  },
-  {
-    key:"lungs", icon:"🫁", hi:"फेफड़े", en:"Lungs", category:"RESPIRATORY SYSTEM",
-    description:"Lungs breathing और oxygen तथा carbon dioxide exchange में important हैं।",
-    points:["Air को lungs तक पहुँचाया जाता है।","Alveoli gas exchange में important हैं।","Oxygen blood में जाती है।","Carbon dioxide body से बाहर निकलती है।"],
-    example:"जब आप deep breath लेते हैं तो lungs expand होते हैं और ज्यादा air अंदर जाती है।",
-    model:"lungs"
-  },
-  {
-    key:"skeleton", icon:"🦴", hi:"कंकाल तंत्र", en:"Skeleton", category:"SKELETAL SYSTEM",
-    description:"Skeleton body को support देता है और important organs को protect करता है।",
-    points:["Body को structural support देता है।","Skull brain को protect करता है।","Rib cage heart और lungs को protect करता है।","Bones और muscles movement में साथ काम करते हैं।"],
-    example:"Skull brain की protection करता है जबकि rib cage heart और lungs को protect करता है।",
-    model:"skeleton"
-  },
-  {
-    key:"liver", icon:"🟤", hi:"यकृत", en:"Liver", category:"DIGESTIVE SYSTEM",
-    description:"Liver nutrients processing और bile production जैसे कई important functions करता है।",
-    points:["Bile produce करता है।","Nutrients को process करता है।","कुछ nutrients को store करता है।","Blood से आने वाले कई substances को process करता है।"],
-    example:"खाने से absorb हुए nutrients liver तक पहुँचते हैं जहाँ उनका processing होता है।",
-    search:"human liver anatomy 3d model"
-  },
-  {
-    key:"kidney", icon:"🫘", hi:"गुर्दे", en:"Kidneys", category:"URINARY SYSTEM",
-    description:"Kidneys blood filtration और body के water balance में important हैं।",
-    points:["Blood से waste products filter करते हैं।","Water balance maintain करने में मदद करते हैं।","Urine formation में important हैं।","Electrolyte balance में role है।"],
-    example:"Kidneys body के internal fluid balance को maintain करने में लगातार काम करते हैं।",
-    search:"human kidney anatomy 3d model"
-  },
-  {
-    key:"stomach", icon:"🟠", hi:"आमाशय", en:"Stomach", category:"DIGESTIVE SYSTEM",
-    description:"Stomach food को temporarily store करता है और digestive juices के साथ mix करता है।",
-    points:["Food temporarily store करता है।","Muscular movement food को mix करता है।","Digestive juices food breakdown में मदद करते हैं।","Food आगे intestine में जाता है।"],
-    example:"जब आप खाना खाते हैं, food oesophagus से होकर stomach तक पहुँचता है।",
-    search:"human stomach anatomy 3d model"
-  },
-  {
-    key:"intestine", icon:"🧬", hi:"आंत", en:"Intestine", category:"DIGESTIVE SYSTEM",
-    description:"Small intestine nutrients absorption और large intestine water absorption में important है।",
-    points:["Small intestine nutrients absorb करती है।","Large intestine water absorb करती है।","Digestive contents को आगे move करती है।","Digestive system का major हिस्सा है।"],
-    example:"Food से मिलने वाले कई nutrients small intestine से absorb होकर blood में जाते हैं।",
-    search:"human intestine anatomy 3d model"
-  },
-  {
-    key:"eye", icon:"👁️", hi:"आँख", en:"Eye", category:"SENSE ORGAN",
-    description:"Eye light को detect करती है और visual information को brain तक पहुँचाने में मदद करती है।",
-    points:["Cornea light को focus करने में मदद करता है।","Iris light की मात्रा control करती है।","Lens light को retina पर focus करता है।","Retina light को neural signals में बदलती है।"],
-    example:"जब आप classroom में board देखते हैं, eyes visual information collect करती हैं।",
-    search:"human eye anatomy 3d model"
-  },
-  {
-    key:"ear", icon:"👂", hi:"कान", en:"Ear", category:"SENSE ORGAN",
-    description:"Ear hearing में मदद करता है और inner ear body balance में भी important है।",
-    points:["Outer ear sound waves collect करता है।","Middle ear vibrations transfer करता है।","Inner ear hearing में important है।","Vestibular system balance में मदद करता है।"],
-    example:"Teacher की आवाज sound waves के रूप में आपके ear तक पहुँचती है।",
-    search:"human ear anatomy 3d model"
-  }
+
+{
+  key:"heart",
+  icon:"🫀",
+
+  hi:"हृदय",
+  en:"Heart",
+
+  category:"CIRCULATORY SYSTEM",
+
+  description:
+  "Heart एक muscular organ है जो blood को पूरे body में pump करता है।",
+
+  points:[
+    "Blood को lungs और पूरे body तक pump करता है।",
+    "Heart में चार chambers होते हैं।",
+    "Valves blood को सही direction में flow करने में मदद करते हैं।",
+    "Exercise के दौरान heart rate बढ़ सकता है।"
+  ],
+
+  example:
+  "जब आप दौड़ते हैं, muscles को ज्यादा oxygen चाहिए होती है इसलिए heart तेजी से pump करता है।",
+
+  model:"heart"
+},
+
+
+{
+  key:"brain",
+  icon:"🧠",
+
+  hi:"मस्तिष्क",
+  en:"Brain",
+
+  category:"NERVOUS SYSTEM",
+
+  description:
+  "Brain nervous system का मुख्य control centre है।",
+
+  points:[
+    "Thinking और learning में important role है।",
+    "Sensory information को process करता है।",
+    "Body की कई activities को coordinate करता है।",
+    "Memory और decision making में important है।"
+  ],
+
+  example:
+  "जब आप कोई maths question solve करते हैं, आपका brain information को process करता है।",
+
+  model:"brain"
+},
+
+
+{
+  key:"lungs",
+  icon:"🫁",
+
+  hi:"फेफड़े",
+  en:"Lungs",
+
+  category:"RESPIRATORY SYSTEM",
+
+  description:
+  "Lungs breathing और oxygen तथा carbon dioxide exchange में important हैं।",
+
+  points:[
+    "Air को lungs तक पहुँचाया जाता है।",
+    "Alveoli gas exchange में important हैं।",
+    "Oxygen blood में जाती है।",
+    "Carbon dioxide body से बाहर निकलती है।"
+  ],
+
+  example:
+  "जब आप deep breath लेते हैं तो lungs expand होते हैं और ज्यादा air अंदर जाती है।",
+
+  model:"lungs"
+},
+
+
+{
+  key:"skeleton",
+  icon:"🦴",
+
+  hi:"कंकाल तंत्र",
+  en:"Skeleton",
+
+  category:"SKELETAL SYSTEM",
+
+  description:
+  "Skeleton body को support देता है और important organs को protect करता है।",
+
+  points:[
+    "Body को structural support देता है।",
+    "Skull brain को protect करता है।",
+    "Rib cage heart और lungs को protect करता है।",
+    "Bones और muscles movement में साथ काम करते हैं।"
+  ],
+
+  example:
+  "Skull brain की protection करता है जबकि rib cage heart और lungs को protect करता है।",
+
+  model:"skeleton"
+},
+
+
+{
+  key:"liver",
+  icon:"🟤",
+
+  hi:"यकृत",
+  en:"Liver",
+
+  category:"DIGESTIVE SYSTEM",
+
+  description:
+  "Liver nutrients processing और bile production जैसे कई important functions करता है।",
+
+  points:[
+    "Bile produce करता है।",
+    "Nutrients को process करता है।",
+    "कुछ nutrients को store करता है।",
+    "Blood से आने वाले कई substances को process करता है।"
+  ],
+
+  example:
+  "खाने से absorb हुए nutrients liver तक पहुँचते हैं जहाँ उनका processing होता है।",
+
+  model:"liver"
+},
+
+
+{
+  key:"kidney",
+  icon:"🫘",
+
+  hi:"गुर्दे",
+  en:"Kidneys",
+
+  category:"URINARY SYSTEM",
+
+  description:
+  "Kidneys blood filtration और body के water balance में important हैं।",
+
+  points:[
+    "Blood से waste products filter करते हैं।",
+    "Water balance maintain करने में मदद करते हैं।",
+    "Urine formation में important हैं।",
+    "Electrolyte balance में role है।"
+  ],
+
+  example:
+  "Kidneys body के internal fluid balance को maintain करने में लगातार काम करते हैं।",
+
+  model:"kidney"
+},
+
+
+{
+  key:"stomach",
+  icon:"🟠",
+
+  hi:"आमाशय",
+  en:"Stomach",
+
+  category:"DIGESTIVE SYSTEM",
+
+  description:
+  "Stomach food को temporarily store करता है और digestive juices के साथ mix करता है।",
+
+  points:[
+    "Food temporarily store करता है।",
+    "Muscular movement food को mix करता है।",
+    "Digestive juices food breakdown में मदद करते हैं।",
+    "Food आगे intestine में जाता है।"
+  ],
+
+  example:
+  "जब आप खाना खाते हैं, food oesophagus से होकर stomach तक पहुँचता है।",
+
+  model:"stomach"
+},
+
+
+{
+  key:"intestine",
+  icon:"🧬",
+
+  hi:"आंत",
+  en:"Intestine",
+
+  category:"DIGESTIVE SYSTEM",
+
+  description:
+  "Small intestine nutrients absorption और large intestine water absorption में important है।",
+
+  points:[
+    "Small intestine nutrients absorb करती है।",
+    "Large intestine water absorb करती है।",
+    "Digestive contents को आगे move करती है।",
+    "Digestive system का major हिस्सा है।"
+  ],
+
+  example:
+  "Food से मिलने वाले कई nutrients small intestine से absorb होकर blood में जाते हैं।",
+
+  model:"intestine"
+},
+
+
+{
+  key:"eye",
+  icon:"👁️",
+
+  hi:"आँख",
+  en:"Eye",
+
+  category:"SENSE ORGAN",
+
+  description:
+  "Eye light को detect करती है और visual information को brain तक पहुँचाने में मदद करती है।",
+
+  points:[
+    "Cornea light को focus करने में मदद करता है।",
+    "Iris light की मात्रा control करती है।",
+    "Lens light को retina पर focus करता है।",
+    "Retina light को neural signals में बदलती है।"
+  ],
+
+  example:
+  "जब आप classroom में board देखते हैं, eyes visual information collect करती हैं।",
+
+  model:"eye"
+},
+
+
+{
+  key:"ear",
+  icon:"👂",
+
+  hi:"कान",
+  en:"Ear",
+
+  category:"SENSE ORGAN",
+
+  description:
+  "Ear hearing में मदद करता है और inner ear body balance में भी important है।",
+
+  points:[
+    "Outer ear sound waves collect करता है।",
+    "Middle ear vibrations transfer करता है।",
+    "Inner ear hearing में important है।",
+    "Vestibular system balance में मदद करता है।"
+  ],
+
+  example:
+  "Teacher की आवाज sound waves के रूप में आपके ear तक पहुँचती है।",
+
+  model:"ear"
+}
+
 ];
 
-let language = "hi";
-let currentModel = "skeleton";
 
-const grid = document.getElementById("organGrid");
-const iframe = document.getElementById("sketchfabViewer");
-const loader = document.getElementById("viewerLoader");
+/* =========================================================
+   STATE
+========================================================= */
+
+let language="hi";
+
+let currentModel="skeleton";
+
+let currentOrgan=organs.find(
+  organ=>organ.key==="skeleton"
+);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const grid=
+document.getElementById("organGrid");
+
+const iframe=
+document.getElementById("sketchfabViewer");
+
+const loader=
+document.getElementById("viewerLoader");
+
+
+/* =========================================================
+   RENDER CARDS
+========================================================= */
 
 function renderOrganCards(){
-  grid.innerHTML = "";
+
+  grid.innerHTML="";
+
   organs.forEach(organ=>{
-    const card = document.createElement("button");
-    card.type = "button";
-    card.className = "organ" + (organ.key===currentModel ? " selected" : "");
-    card.innerHTML = `
-      <div class="organ-icon" aria-hidden="true">${organ.icon}</div>
-      <h4>${language==="hi" ? organ.hi : organ.en}</h4>
-      <p>${language==="hi" ? organ.en : organ.hi}</p>
-      <span>${language==="hi" ? "Explore / Search →" : "Explore / Search →"}</span>
+
+    const card=
+    document.createElement("button");
+
+    card.type="button";
+
+    card.className=
+    "organ"+
+    (
+      organ.key===currentOrgan.key
+      ?
+      " selected"
+      :
+      ""
+    );
+
+    card.innerHTML=`
+
+      <div class="organ-icon">
+        ${organ.icon}
+      </div>
+
+      <h4>
+        ${
+          language==="hi"
+          ?
+          organ.hi
+          :
+          organ.en
+        }
+      </h4>
+
+      <p>
+        ${
+          language==="hi"
+          ?
+          organ.en
+          :
+          organ.hi
+        }
+      </p>
+
+      <span>
+        Explore 3D →
+      </span>
+
     `;
-    card.addEventListener("click",()=>showOrgan(organ));
+
+    card.addEventListener(
+      "click",
+      ()=>{
+        showOrgan(organ);
+      }
+    );
+
     grid.appendChild(card);
+
   });
+
 }
+
+
+/* =========================================================
+   LOAD 3D MODEL
+========================================================= */
 
 function load3DModel(key){
-  const model = models[key];
-  if(!model) return false;
 
-  currentModel = key;
-  loader.classList.add("show");
+  const model=models[key];
 
-  document.getElementById("viewerTitle").textContent = model.title;
-  iframe.title = model.title + " interactive viewer";
+  if(!model){
 
-  const embedURL =
-    `https://sketchfab.com/models/${model.id}/embed?autostart=1&ui_infos=0&ui_controls=1`;
+    showToast(
+      "This model is not configured yet."
+    );
 
-  iframe.src = embedURL;
-
-  const hide = ()=>setTimeout(()=>loader.classList.remove("show"),650);
-  iframe.addEventListener("load",hide,{once:true});
-
-  document.getElementById("modelLink").href = model.url;
-  document.getElementById("modelLink").onclick = null;
-  return true;
-}
-
-function showOrgan(organ){
-  if(organ.model){
-    load3DModel(organ.model);
-  }else{
-    currentModel = organ.key;
-    showToast(language==="hi"
-      ? `${organ.hi} का dedicated viewer अभी configured नहीं है — Sketchfab search खोली जा रही है।`
-      : `A dedicated ${organ.en} viewer is not configured yet — opening Sketchfab search.`);
-  }
-
-  document.getElementById("infoCategory").textContent = organ.category;
-  document.getElementById("infoName").textContent = language==="hi" ? organ.hi : organ.en;
-  document.getElementById("infoEnglish").textContent = language==="hi" ? organ.en : organ.hi;
-  document.getElementById("infoDescription").textContent = organ.description;
-
-  const points = document.getElementById("points");
-  points.innerHTML = "";
-  organ.points.forEach((text,i)=>{
-    const div=document.createElement("div");
-    div.className="point";
-    div.innerHTML=`<span class="point-number">${String(i+1).padStart(2,"0")}</span><span>${text}</span>`;
-    points.appendChild(div);
-  });
-
-  document.getElementById("example").textContent = organ.example;
-
-  const modelLink = document.getElementById("modelLink");
-  if(organ.model){
-    modelLink.href = models[organ.model].url;
-    modelLink.textContent = language==="hi" ? `${organ.hi} का 3D Model ↗` : `Open ${organ.en} 3D Model ↗`;
-    modelLink.onclick = null;
-  }else{
-    modelLink.href="#";
-    modelLink.textContent = language==="hi" ? `${organ.hi} 3D Search ↗` : `Search ${organ.en} 3D ↗`;
-    modelLink.onclick=(e)=>{e.preventDefault();searchSketchfab(null,organ.search);};
-  }
-
-  renderOrganCards();
-  document.getElementById("infoCard").scrollIntoView({behavior:"smooth",block:"center"});
-}
-
-function searchSketchfab(inputId, forcedQuery=""){
-  let query=forcedQuery;
-  if(!query && inputId){
-    query=document.getElementById(inputId).value.trim();
-  }
-  if(!query){
-    showToast(language==="hi" ? "पहले body part का नाम लिखें।" : "Enter a body part first.");
     return;
   }
-  const url=`https://sketchfab.com/search?type=models&q=${encodeURIComponent("human anatomy "+query)}`;
-  window.open(url,"_blank","noopener,noreferrer");
+
+
+  currentModel=key;
+
+
+  loader.classList.add("show");
+
+
+  document.getElementById(
+    "viewerTitle"
+  ).textContent=
+  model.title;
+
+
+  iframe.title=
+  model.title+
+  " interactive 3D viewer";
+
+
+  const embedURL=
+  `https://sketchfab.com/models/${model.id}/embed?autostart=1&ui_infos=0&ui_controls=1`;
+
+
+  iframe.src=embedURL;
+
+
+  const modelLink=
+  document.getElementById("modelLink");
+
+
+  modelLink.href=
+  model.url;
+
+
+  modelLink.textContent=
+  language==="hi"
+  ?
+  `${currentOrgan.hi} का 3D Model ↗`
+  :
+  `Open ${currentOrgan.en} 3D Model ↗`;
+
+
+  iframe.addEventListener(
+    "load",
+    ()=>{
+      setTimeout(
+        ()=>{
+          loader.classList.remove("show");
+        },
+        500
+      );
+    },
+    {
+      once:true
+    }
+  );
+
 }
 
-function changeLanguage(lang){
-  language=lang;
-  document.getElementById("hi").classList.toggle("active",lang==="hi");
-  document.getElementById("en").classList.toggle("active",lang==="en");
 
-  document.getElementById("heroTitle").innerHTML =
-    lang==="hi"
-      ? `Human Body को <span class="gradient">3D में Explore</span> करें`
-      : `Explore the <span class="gradient">Human Body in 3D</span>`;
+/* =========================================================
+   SHOW ORGAN
+========================================================= */
 
-  document.getElementById("heroText").textContent =
-    lang==="hi"
-      ? "Human anatomy, body parts और major organs को Hindi-English explanations के साथ explore करें। 3D models को rotate और zoom करके school biology concepts को visually समझें।"
-      : "Explore human anatomy, body parts and major organs with simple explanations. Rotate and zoom selected 3D models to understand school biology concepts visually.";
+function showOrgan(organ){
 
-  document.getElementById("organsTitle").textContent =
-    lang==="hi" ? "⭐ सबसे Important Human Body Parts" : "⭐ Most Important Human Body Parts";
-  document.getElementById("organsSubtitle").textContent =
-    lang==="hi" ? "Commonly used organs for school biology" : "Commonly used organs for school biology";
-  document.getElementById("systemsTitle").textContent =
-    lang==="hi" ? "Human Body Systems" : "Human Body Systems";
-  document.getElementById("searchTitle").textContent =
-    lang==="hi" ? "🔍 कोई भी Body Part Search करें" : "🔍 Search Any Body Part";
-  document.getElementById("searchText").textContent =
-    lang==="hi"
-      ? "अगर required body part ऊपर नहीं है, उसका नाम search करें और Sketchfab पर related anatomy 3D models देखें।"
-      : "If your required body part is not listed above, search for it on Sketchfab and explore related anatomy 3D models.";
-  document.getElementById("searchButton").textContent =
-    lang==="hi" ? "Search 3D Models" : "Search 3D Models";
+  currentOrgan=organ;
+
+
+  if(organ.model){
+
+    load3DModel(
+      organ.model
+    );
+
+  }
+
+
+  document.getElementById(
+    "infoCategory"
+  ).textContent=
+  organ.category;
+
+
+  document.getElementById(
+    "infoName"
+  ).textContent=
+  language==="hi"
+  ?
+  organ.hi
+  :
+  organ.en;
+
+
+  document.getElementById(
+    "infoEnglish"
+  ).textContent=
+  language==="hi"
+  ?
+  organ.en
+  :
+  organ.hi;
+
+
+  document.getElementById(
+    "infoDescription"
+  ).textContent=
+  organ.description;
+
+
+  const points=
+  document.getElementById("points");
+
+  points.innerHTML="";
+
+
+  organ.points.forEach(
+    (text,index)=>{
+
+      const div=
+      document.createElement("div");
+
+      div.className="point";
+
+      div.innerHTML=`
+
+        <span class="point-number">
+          ${String(index+1).padStart(2,"0")}
+        </span>
+
+        <span>
+          ${text}
+        </span>
+
+      `;
+
+      points.appendChild(div);
+
+    }
+  );
+
+
+  document.getElementById(
+    "example"
+  ).textContent=
+  organ.example;
+
+
+  const modelLink=
+  document.getElementById(
+    "modelLink"
+  );
+
+
+  if(organ.model){
+
+    modelLink.href=
+    models[organ.model].url;
+
+    modelLink.textContent=
+    language==="hi"
+    ?
+    `${organ.hi} का 3D Model ↗`
+    :
+    `Open ${organ.en} 3D Model ↗`;
+
+  }
+
 
   renderOrganCards();
+
+
+  document
+  .getElementById("infoCard")
+  .scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
 }
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchSketchfab(inputId){
+
+  const input=
+  document.getElementById(
+    inputId
+  );
+
+  if(!input){
+
+    return;
+  }
+
+
+  const query=
+  input.value.trim();
+
+
+  if(!query){
+
+    showToast(
+      language==="hi"
+      ?
+      "पहले body part का नाम लिखें।"
+      :
+      "Enter a body part first."
+    );
+
+    return;
+  }
+
+
+  /*
+    IMPORTANT:
+    No automatic "human anatomy" prefix.
+    The exact user query is sent to Sketchfab.
+  */
+
+  const url=
+  `https://sketchfab.com/search?type=models&q=${encodeURIComponent(query)}`;
+
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
+/* =========================================================
+   SEARCH CURRENT ORGAN
+========================================================= */
+
+function searchCurrentModel(){
+
+  const organName=
+  language==="hi"
+  ?
+  currentOrgan.en
+  :
+  currentOrgan.en;
+
+
+  const url=
+  `https://sketchfab.com/search?type=models&q=${encodeURIComponent(organName)}`;
+
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+function changeLanguage(lang){
+
+  language=lang;
+
+
+  document
+  .getElementById("hi")
+  .classList
+  .toggle(
+    "active",
+    lang==="hi"
+  );
+
+
+  document
+  .getElementById("en")
+  .classList
+  .toggle(
+    "active",
+    lang==="en"
+  );
+
+
+  document
+  .getElementById("heroTitle")
+  .innerHTML=
+
+  lang==="hi"
+
+  ?
+
+  `Human Body को
+   <span class="gradient">
+   3D में Explore
+   </span>
+   करें`
+
+  :
+
+  `Explore the
+   <span class="gradient">
+   Human Body in 3D
+   </span>`;
+
+
+  document
+  .getElementById("heroText")
+  .textContent=
+
+  lang==="hi"
+
+  ?
+
+  "Human anatomy, body parts और major organs को Hindi-English explanations के साथ explore करें। 3D models को rotate और zoom करके school biology concepts को visually समझें।"
+
+  :
+
+  "Explore human anatomy, body parts and major organs with simple explanations. Rotate and zoom selected 3D models to understand school biology concepts visually.";
+
+
+  document
+  .getElementById("organsTitle")
+  .textContent=
+
+  lang==="hi"
+
+  ?
+
+  "⭐ सबसे Important Human Body Parts"
+
+  :
+
+  "⭐ Most Important Human Body Parts";
+
+
+  document
+  .getElementById("searchTitle")
+  .textContent=
+
+  lang==="hi"
+
+  ?
+
+  "🔍 कोई भी Body Part Search करें"
+
+  :
+
+  "🔍 Search Any Body Part";
+
+
+  document
+  .getElementById("searchText")
+  .textContent=
+
+  lang==="hi"
+
+  ?
+
+  "अगर required body part ऊपर नहीं है, उसका नाम search करें और Sketchfab पर related anatomy 3D models देखें।"
+
+  :
+
+  "If your required body part is not listed above, search for it on Sketchfab and explore related anatomy 3D models.";
+
+
+  document
+  .getElementById("searchButton")
+  .textContent=
+  "Search 3D Models";
+
+
+  /*
+    Update currently selected organ
+  */
+
+  document
+  .getElementById("infoName")
+  .textContent=
+
+  language==="hi"
+  ?
+  currentOrgan.hi
+  :
+  currentOrgan.en;
+
+
+  document
+  .getElementById("infoEnglish")
+  .textContent=
+
+  language==="hi"
+  ?
+  currentOrgan.en
+  :
+  currentOrgan.hi;
+
+
+  if(currentOrgan.model){
+
+    document
+    .getElementById("modelLink")
+    .textContent=
+
+    language==="hi"
+
+    ?
+
+    `${currentOrgan.hi} का 3D Model ↗`
+
+    :
+
+    `Open ${currentOrgan.en} 3D Model ↗`;
+
+  }
+
+
+  renderOrganCards();
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 function showToast(message){
-  const toast=document.getElementById("toast");
-  toast.textContent=message;
-  toast.classList.add("show");
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer=setTimeout(()=>toast.classList.remove("show"),3000);
+
+  const toast=
+  document.getElementById("toast");
+
+
+  toast.textContent=
+  message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.__toastTimer
+  );
+
+
+  window.__toastTimer=
+  setTimeout(
+    ()=>{
+      toast.classList.remove(
+        "show"
+      );
+    },
+    3000
+  );
+
 }
 
-document.getElementById("topSearch").addEventListener("keydown",e=>{
-  if(e.key==="Enter") searchSketchfab("topSearch");
-});
-document.getElementById("bigSearch").addEventListener("keydown",e=>{
-  if(e.key==="Enter") searchSketchfab("bigSearch");
-});
 
-iframe.addEventListener("load",()=>{
-  loader.classList.remove("show");
-});
+/* =========================================================
+   ENTER SEARCH
+========================================================= */
 
-document.getElementById("points").innerHTML = `
-  <div class="point"><span class="point-number">01</span><span>Body को structural support देता है।</span></div>
-  <div class="point"><span class="point-number">02</span><span>Skull, rib cage और bones important organs को protection देते हैं।</span></div>
-  <div class="point"><span class="point-number">03</span><span>Bones और muscles movement में साथ काम करते हैं।</span></div>
-  <div class="point"><span class="point-number">04</span><span>Bone marrow blood-cell production में important है।</span></div>
+document
+.getElementById("topSearch")
+.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key==="Enter"){
+
+      searchSketchfab(
+        "topSearch"
+      );
+
+    }
+
+  }
+);
+
+
+document
+.getElementById("bigSearch")
+.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key==="Enter"){
+
+      searchSketchfab(
+        "bigSearch"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIAL SKELETON INFO
+========================================================= */
+
+document.getElementById(
+  "points"
+).innerHTML=`
+
+<div class="point">
+
+<span class="point-number">
+01
+</span>
+
+<span>
+Body को structural support देता है।
+</span>
+
+</div>
+
+
+<div class="point">
+
+<span class="point-number">
+02
+</span>
+
+<span>
+Skull, rib cage और bones important organs को protection देते हैं।
+</span>
+
+</div>
+
+
+<div class="point">
+
+<span class="point-number">
+03
+</span>
+
+<span>
+Bones और muscles movement में साथ काम करते हैं।
+</span>
+
+</div>
+
+
+<div class="point">
+
+<span class="point-number">
+04
+</span>
+
+<span>
+Bone marrow blood-cell production में important है।
+</span>
+
+</div>
+
 `;
 
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
 renderOrganCards();
+
+
+/*
+  Skeleton remains the default model.
+  No other model is loaded automatically.
+*/
+
+currentOrgan=
+organs.find(
+  organ=>organ.key==="skeleton"
+);
+
 </script>
+
 </body>
 </html>
